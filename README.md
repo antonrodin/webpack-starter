@@ -1,18 +1,16 @@
-# Webpack and Babel Starter Source
+# Babel branch Starter Source
+## Converts the ES6 o ES2015 code into old shitty ES5 Javascript,
+## that runs in the old browsers like iExplorer 8 and more...
 
-Init NPM project, like so. It creates packages.json file.
+Got into master, to set up starter webpack, and then go into babel branch.
 
-```bash
-npm init
+1. Install babel-loader, like so or google it:
+
+```shell
+npm install --save-dev babel-loader babel-core babel-preset-env webpack
 ```
 
-Install webpack LOCALY, like so:
-
-```bash
-npm install --save-dev webpack@2.2.0-rc.0
-```
-
-Create the file webpack.config.js with this basic content:
+Add into the file webpack.config.js, new module, like so:
 
 ```javascript
 
@@ -35,19 +33,3 @@ const config = {
 //Also we should export that config
 module.exports = config;
 ```
-
-Inside package.json file, add new script for build
-
-```javascript
-"scripts": {
-    "build": "webpack"
-  },
-```
-
-Now you can run:
-
-```shell
-npm run build
-```
-
-The End...
