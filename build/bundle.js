@@ -73,11 +73,18 @@
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 var sum = function sum(a, b) {
   return a + b;
 };
 
-module.exports = sum;
+//CommmonJS exports
+//module.exports = sum;
+
+//ES2015 Export
+exports.default = sum;
 
 /***/ }),
 /* 1 */
@@ -86,10 +93,18 @@ module.exports = sum;
 "use strict";
 
 
-var sum = __webpack_require__(0);
+var _sum = __webpack_require__(0);
 
-var total = document.getElementById('total');
-total.innerHTML = sum(20, 50);
+var _sum2 = _interopRequireDefault(_sum);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var total = document.getElementById('total'); //CommonJS Import
+//const sum = require('./sum.js');
+
+//ES2015 Import
+
+total.innerHTML = (0, _sum2.default)(20, 50);
 
 /***/ })
 /******/ ]);

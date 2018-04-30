@@ -10,7 +10,7 @@ Got into master, to set up starter webpack, and then go into babel branch.
 npm install --save-dev babel-loader babel-core babel-preset-env webpack
 ```
 
-Add into the file webpack.config.js, new module, like so:
+1. Add into the file webpack.config.js, new module, like so:
 
 ```javascript
 
@@ -18,18 +18,28 @@ Add into the file webpack.config.js, new module, like so:
 const path = require('path');
 
 const config = {
-    //Entry .js file, somekind like bootstrap
     entry: "./src/index.js",
     output: {
-        
-        //Global route for working directory
         path: path.resolve(__dirname, 'build'),
-
-        //Our final file, the conventino is call it bundle.js
         filename: "bundle.js"
+    },
+    module: {
+        rules: [
+            {
+                use: 'babel-loader',
+                test: /\.js$/
+            }
+        ]
     }
 };
 
-//Also we should export that config
 module.exports = config;
+```
+
+1. Create file .babelrc with this piece of code:
+
+```javascript
+{
+    "presets": ["babel-preset-env"]
+}
 ```
