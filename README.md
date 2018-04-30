@@ -1,5 +1,8 @@
 # Webpack and Babel Starter Source
 
+* Webpack - Master branch
+* Babel - Babel branch
+
 Init NPM project, like so. It creates packages.json file.
 
 ```bash
