@@ -2,6 +2,7 @@
 
 * Webpack - Master branch
 * Babel - Babel branch
+* CSS - CSS branch, handle CSS files with webpack
 
 Init NPM project, like so. It creates packages.json file.
 
