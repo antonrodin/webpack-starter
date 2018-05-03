@@ -1,8 +1,6 @@
-# Babel branch Starter Source
+# CSS handling with Webpack
 
-Converts the ES2015 code into old shitty ES5 javascript, that runs in the old browsers like iExplorer 8 and others.
-
-1. Install babel-loader, like so or google it:
+1. Install 
 
 ```shell
 npm install --save-dev babel-loader babel-core babel-preset-env webpack
