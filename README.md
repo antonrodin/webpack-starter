@@ -37,10 +37,53 @@ const config = {
 module.exports = config;
 ```
 
-3. Create file .babelrc with this piece of code:
+3. Run 'npm run build', in this case the CSS will be inserted inside the HEAD tags.
+
+## ExtractTextWebpack Plugin
+
+This plugin get the css loaded with "css-loader" and save it into the specified file inside "build" directory, like style.css.
+
+1. Install the plugin, like so:
+
+```shell 
+npm install --save-dev extract-text-webpack-plugin@2.0.0-beta.4
+```
+
+2. Modify our rules:
 
 ```javascript
-{
-    "presets": ["babel-preset-env"]
-}
+//Helper for absolute path
+const path = require('path');
+
+//ExtractTextPlugin
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+const config = {
+    entry: "./src/index.js",
+    output: {
+        path: path.resolve(__dirname, 'build'),
+        filename: "bundle.js"
+    },
+    module: {
+        rules: [
+            {
+                use: 'babel-loader',
+                test: /\.js$/
+            },
+            {
+                loader: ExtractTextPlugin.extract({
+                    loader: 'css-loader'
+                }),
+                test: /\.css$/
+            }
+        ]
+    },
+    plugins: [
+        new ExtractTextPlugin('style.css')
+    ]
+};
+
+module.exports = config;
 ```
+
+3. Run 'npm run build' and include into your indx.html link to 'build/style.css'
