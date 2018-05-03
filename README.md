@@ -1,8 +1,6 @@
 # Babel branch Starter Source
-## Converts the ES6 o ES2015 code into old shitty ES5 Javascript,
-## that runs in the old browsers like iExplorer 8 and more...
 
-Got into master, to set up starter webpack, and then go into babel branch.
+Converts the ES2015 code into old shitty ES5 javascript, that runs in the old browsers like iExplorer 8 and others.
 
 1. Install babel-loader, like so or google it:
 
@@ -10,7 +8,7 @@ Got into master, to set up starter webpack, and then go into babel branch.
 npm install --save-dev babel-loader babel-core babel-preset-env webpack
 ```
 
-1. Add into the file webpack.config.js, new module, like so:
+2. Add into the file webpack.config.js, new module, like so:
 
 ```javascript
 
@@ -36,7 +34,7 @@ const config = {
 module.exports = config;
 ```
 
-1. Create file .babelrc with this piece of code:
+3. Create file .babelrc with this piece of code:
 
 ```javascript
 {
