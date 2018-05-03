@@ -1,12 +1,13 @@
 # CSS handling with Webpack
 
-1. Install 
+1. Install 'css-loader' (Deal with CSS Imports) and 'style-loader' 
+(Takes CSS imports and insert them into the html)
 
 ```shell
-npm install --save-dev babel-loader babel-core babel-preset-env webpack
+npm install --save-dev style-loader css-loader webpack
 ```
 
-2. Add into the file webpack.config.js, new module, like so:
+2. Add into the file webpack.config.js, new rules like so:
 
 ```javascript
 
