@@ -40,18 +40,22 @@ const config = {
 module.exports = config;
 ```
 
-Inside package.json file, add new script for build
+Inside package.json file, add new script for build and other for watch.
 
 ```javascript
 "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "watch": "webpack --watch"
   },
 ```
 
 Now you can run:
 
 ```shell
+# This command only build once your files
 npm run build
+# This command check your files every times and compile if find some changes
+npm run watch
 ```
 
 The End...
