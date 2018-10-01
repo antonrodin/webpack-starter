@@ -1,17 +1,25 @@
 {
-  "name": "webpackstartersrc",
+  "name": "WebpackStarterSRC",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antonrodin/webpack-starter.git"
+  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.4",
-    "babel-preset-env": "^1.6.1",
-    "webpack": "^2.7.0"
+  "bugs": {
+    "url": "https://github.com/antonrodin/webpack-starter/issues"
+  },
+  "homepage": "https://github.com/antonrodin/webpack-starter#readme",
+  "dependencies": {
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.9"
   }
 }
