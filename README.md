@@ -1,18 +1,17 @@
-const path = require("path");
+Instructions for Style Loader installation
+==========================================
 
-module.exports = {
-    entry: {
-        main: "./src/main.js"
-    },
-    mode: "development",
-    output: {
-        filename: "[name]-bundle.js",
-        path: path.resolve(__dirname, "../dist")
-    },
-    devServer: {
-        contentBase: "dist"
-    },
-    module: {
+Webpack 4
+
+```shell
+npm install style-loader css-loader
+```
+
+Configuration of the modules inside the webpack.dev.js
+
+```javascript
+
+module: {
         rules: [
             {
                 test: /\.css$/,
@@ -27,4 +26,5 @@ module.exports = {
             }
         ]
     }
-}
+
+```

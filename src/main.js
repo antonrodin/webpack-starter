@@ -1,1 +1,3 @@
-alert("Hellllloooo Worldddd!");
+require("./main.css")
+
+console.log("Hello World");
