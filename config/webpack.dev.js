@@ -10,10 +10,43 @@ module.exports = {
         path: path.resolve(__dirname, "../dist")
     },
     devServer: {
-        contentBase: "dist"
+        contentBase: "dist",
+        overlay: true
     },
     module: {
         rules: [
+            {
+                test: /\.html$/,
+                use: [ 
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: "[name].html"
+                        }
+                    },
+                    {
+                        loader: 'extract-loader'
+                    },
+                    {
+                        loader: 'html-loader',
+                        options: {
+                            minimize: false,
+                            attrs: ["img:src"]
+                        }
+                    },
+                ]
+            },
+            {
+                test: /\.(jpg|jpeg|png|gif)$/,
+                use: [
+                    { 
+                        loader: 'file-loader',
+                        options: {
+                            name: "img/[name]-[hash:8].[ext]"
+                        } 
+                    }
+                ]
+            },
             {
                 test: /\.css$/,
                 use: [
@@ -23,7 +56,7 @@ module.exports = {
                     {
                         loader: "css-loader"
                     }
-            ]
+                ]
             }
         ]
     }
