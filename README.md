@@ -68,3 +68,33 @@ webpack.dev.js configuration for extract and process html files.
                 ]
             },
 ```
+
+## Process images with file loader
+
+The previous html loader should be updated like that:
+
+```javascript
+                    {
+                        loader: 'html-loader',
+                        options: {
+                            minimize: false,
+                            attrs: ["img:src"]
+                        }
+                    },
+```
+
+And then add other rule
+
+```javascript
+{
+                test: /\.(jpg|jpeg|png|gif)$/,
+                use: [
+                    { 
+                        loader: 'file-loader',
+                        options: {
+                            name: "img/[name]-[hash:8].[ext]"
+                        } 
+                    }
+                ]
+            },
+```
