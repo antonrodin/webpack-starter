@@ -1,100 +1,44 @@
-Instructions for Style Loader installation
-==========================================
+Babel
+=====
 
-Webpack 4
-
-```shell
-npm install style-loader css-loader
-```
-
-Configuration of the modules inside the webpack.dev.js
-
-```javascript
-
-module: {
-        rules: [
-            {
-                test: /\.css$/,
-                use: [
-                    { 
-                        loader: "style-loader" 
-                    },
-                    {
-                        loader: "css-loader"
-                    }
-            ]
-            }
-        ]
-    }
-
-```
-
-# Better errors overlay:true
-
-```javascript
-devServer: {
-        contentBase: "dist",
-        overlay: true
-    },
-```
-
-## Install html loaders:
+Webpack 4 & Babel
 
 ```shell
-npm install html-loader extract-loader file-loader
+# Install
+npm install babel-core
+
+#Create .babelrc
+touch .babelrc
+
+# Install babel plugins
+npm install babel-plugin-transform-es2015-arrow-functions babel-cli
+```
+Modify the .babelrc file toadd installed plugin
+
+```json
+{
+    "plugins": ["transform-es2015-arrow-functions"]
+}
 ```
 
-webpack.dev.js configuration for extract and process html files.
+The babel RC can be tested if you install it locally like that:
+
+```shell
+npx babel src/main.js
+```
+
+## Babel Loader
+
+```shell
+npm install babel-loader
+```
+
+Configure it like so:
 
 ```javascript
 {
-                test: /\.html$/,
-                use: [ 
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: "[name].html"
-                        }
-                    },
-                    {
-                        loader: 'extract-loader'
-                    },
-                    {
-                        loader: 'html-loader',
-                        options: {
-                            minimize: false
-                        }
-                    },
-                ]
-            },
-```
-
-## Process images with file loader
-
-The previous html loader should be updated like that:
-
-```javascript
-                    {
-                        loader: 'html-loader',
-                        options: {
-                            minimize: false,
-                            attrs: ["img:src"]
-                        }
-                    },
-```
-
-And then add other rule
-
-```javascript
-{
-                test: /\.(jpg|jpeg|png|gif)$/,
-                use: [
-                    { 
-                        loader: 'file-loader',
-                        options: {
-                            name: "img/[name]-[hash:8].[ext]"
-                        } 
-                    }
-                ]
-            },
+    test: /\.js$/,
+    use: [{ loader: "babel-loader" }],
+    exclude: /node_modules/
+}
 ```

@@ -19,6 +19,10 @@
   },
   "homepage": "https://github.com/antonrodin/webpack-starter#readme",
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-transform-es2015-arrow-functions": "^6.22.0",
     "css-loader": "^1.0.0",
     "extract-loader": "^3.0.0",
     "file-loader": "^2.0.0",
@@ -27,5 +31,9 @@
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.9"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2"
   }
 }

@@ -1,4 +1,8 @@
 require("./main.css")
 require("./index.html")
 
-console.log("Hello World");
+var a = () => {
+    return console.log('Hello from the future');
+}
+
+console.log('Hello cruel world');
