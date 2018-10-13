@@ -1,44 +1,65 @@
-Babel
-=====
+Babel Presets
+=============
 
-Webpack 4 & Babel
+Webpack 4 & Babel presets, resumption of the babel-2 branch
 
-```shell
-# Install
-npm install babel-core
-
-#Create .babelrc
-touch .babelrc
-
-# Install babel plugins
-npm install babel-plugin-transform-es2015-arrow-functions babel-cli
-```
-Modify the .babelrc file toadd installed plugin
-
-```json
-{
-    "plugins": ["transform-es2015-arrow-functions"]
-}
-```
-
-The babel RC can be tested if you install it locally like that:
+# Presets
 
 ```shell
-npx babel src/main.js
+npm install babel-preset-env
 ```
 
-## Babel Loader
-
-```shell
-npm install babel-loader
-```
-
-Configure it like so:
+Update the .babelrc like so:
 
 ```javascript
 {
-    test: /\.js$/,
-    use: [{ loader: "babel-loader" }],
-    exclude: /node_modules/
+    "presets": [
+        [
+            "env",
+            { 
+                "targets": {
+                    "browsers": ["last 2 versions"]
+                },
+                "debug": true 
+            }
+        ]
+    ]
 }
 ```
+
+This configuration transpile the modern ES2015 JS to be used in two old browsers, also with the debug set to true, you should view more info then run npm start
+
+# Babel Plugin Transform Runtime
+
+Install dependencies:
+
+```shell
+npm install --save-dev @babel/plugin-transform-runtime
+npm install --save @babel/runtime
+```
+
+Update .babelrc file
+
+```shell
+{
+  "plugins": ["@babel/plugin-transform-runtime"]
+}
+```
+
+# Polyfill
+
+This will emulate a full ES2015+ environment, search more about in babel documentation
+
+```shell
+# Install
+npm install babel-polyfill
+```
+Modify the .webpack.dev.js file to add babel-polyfill into entry array.
+
+```json
+    entry: {
+        main: ["babel-polyfill", "./src/main.js"]
+    }
+```
+
+When you run npm start now you can find that main-bundle is a bigger file than includes a huge amount of libraries.
