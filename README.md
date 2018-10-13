@@ -1,71 +1,81 @@
-Babel Presets
-=============
+Express Middleware
+==================
 
-Webpack 4 & Babel presets, resumption of the babel-2 branch
-
-# Presets
+Build some kind of webpack-server with Express
 
 ```shell
-npm install babel-preset-env
+# install express
+npm install express
+
+# create server directory
+mkdir src/server
+
+## create two files
+touch src/server/main.js src/server/express.js
 ```
 
-Update the .babelrc like so:
+Add new script in **package.json**, that runs our main.js:
+
+```javascript
+"scripts": {
+    "start": "webpack-dev-server --config=config/webpack.dev.js",
+    "build": "webpack --config=config/webpack.dev.js",
+    "dev": "node src/server/main.js"
+  }
+```
+
+Also remove useless stuff from __.babelrc__
 
 ```javascript
 {
     "presets": [
-        [
-            "env",
-            { 
-                "targets": {
-                    "browsers": ["last 2 versions"]
-                },
-                "debug": true 
-            }
-        ]
-    ]
+        ["env"]
+    ],
+    "plugins": ["transform-runtime"]
 }
 ```
 
-This configuration transpile the modern ES2015 JS to be used in two old browsers, also with the debug set to true, you should view more info then run npm start
-
-# Babel Plugin Transform Runtime
-
-Install dependencies:
+Also the I installed the babel-register module
 
 ```shell
-npm install --save-dev @babel/plugin-transform-runtime
-npm install --save @babel/runtime
+ npm install babel-register
 ```
 
-Update .babelrc file
+**This is a continuos of the babel-3-preset, I get some errors because of that, but reinstalling babel-core and modules, it should be fine**
 
-```shell
-{
-  "plugins": ["@babel/plugin-transform-runtime"]
-}
-```
+## Create simple Express Server
 
-Require the regeneraton from your code:
+__main.js__ file:
 
 ```javascript
-require("@babel/runtime/regenerator");
+// This one tells to transpile with the rules specified inside .babelrc file
+require("babel-register")
+
+// This one requires our express.js file that going to contain our code
+require("./express.js")
 ```
 
-# Polyfill
+__express.js__ file:
 
-This will emulate a full ES2015+ environment, search more about in babel documentation
+```javascript
+import express from "express"
+
+// Create simple express server
+const server = express();
+
+// User static middleware
+const staticMiddleware = express.static("dist");
+
+server.use(staticMiddleware);
+server.listen(8080, () => {
+    console.log("The Server is Listen 8080")
+})
+```
+
+Now you can run:
 
 ```shell
-# Install
-npm install babel-polyfill
-```
-Modify the .webpack.dev.js file to add babel-polyfill into entry array.
-
-```json
-    entry: {
-        main: ["babel-polyfill", "./src/main.js"]
-    }
+npm run dev
 ```
 
-When you run npm start now you can find that main-bundle is a bigger file than includes a huge amount of libraries.
+And if it works open http://localhost:8080/ in any browser, the hot reloading not going to work...
