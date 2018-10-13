@@ -1,1 +1,1 @@
-alert("Hellllloooo Worldddd!");
+alert("Hello cruel world");
