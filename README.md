@@ -1,61 +1,15 @@
-# Webpack and Babel Starter Source
+# Webpack, Babel, Express and more
 
-* Webpack - Master branch
-* Babel - Babel branch
-* CSS - CSS branch, handle CSS files with webpack
+This repo is a kind of notes from udemy courses about webpack 2 and the latest 4 version.
+Also info about transpiler Babel, Express webserver and more
 
-Init NPM project, like so. It creates packages.json file.
+## Branches
 
-```bash
-npm init
-```
+The more usefull branch, is the **up-and-runing**, is the starter project for Webpack 4, with some explanations 
+inside README.md.
 
-Install webpack LOCALY, like so:
-
-```bash
-npm install --save-dev webpack@2.2.0-rc.0
-```
-
-Create the file webpack.config.js with this basic content:
-
-```javascript
-
-//helper for path
-const path = require('path');
-
-const config = {
-    //Entry .js file, somekind like bootstrap
-    entry: "./src/index.js",
-    output: {
-        
-        //Global route for working directory
-        path: path.resolve(__dirname, 'build'),
-
-        //Our final file, the conventino is call it bundle.js
-        filename: "bundle.js"
-    }
-};
-
-//Also we should export that config
-module.exports = config;
-```
-
-Inside package.json file, add new script for build and other for watch.
-
-```javascript
-"scripts": {
-    "build": "webpack",
-    "watch": "webpack --watch"
-  },
-```
-
-Now you can run:
-
-```shell
-# This command only build once your files
-npm run build
-# This command check your files every times and compile if find some changes
-npm run watch
-```
-
-The End...
+* Master branch (License, Index and README.md)
+* __up-and-runing__ is a starter project for **Webpack 4**
+* __webpack-2 branch__, the old 2 version
+* __babel, babel-2 and babel-3-presets__ - These are babel branches, with some usefull config files. Presets, polyfill, plugins and more.
+* __CSS, css-loaders and img-loaders__ - CSS branch, handle css, images or html files with webpack.
