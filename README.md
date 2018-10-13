@@ -46,6 +46,12 @@ Update .babelrc file
 }
 ```
 
+Require the regeneraton from your code:
+
+```javascript
+require("@babel/runtime/regenerator");
+```
+
 # Polyfill
 
 This will emulate a full ES2015+ environment, search more about in babel documentation
